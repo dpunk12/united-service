@@ -1,0 +1,285 @@
+/* =============================================================
+   OTU Services — Admin CSS
+   Maroon (#800020) & Gold (#D4AF37) brand palette
+   ============================================================= */
+
+/* ---- Wrap & Typography ---- */
+.otu-admin-wrap {
+    max-width: 1200px;
+}
+
+.otu-admin-wrap h1 {
+    color: #800020;
+    border-bottom: 3px solid #D4AF37;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+.otu-admin-wrap h2 {
+    color: #800020;
+    margin-top: 24px;
+}
+
+/* ---- Stats Cards ---- */
+.otu-admin-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.otu-admin-stat-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-top: 4px solid #800020;
+    border-radius: 6px;
+    padding: 20px 28px;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.otu-admin-stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: #800020;
+    line-height: 1.2;
+}
+
+.otu-admin-stat-label {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ---- Quick Links ---- */
+.otu-admin-quick-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.otu-admin-quick-links ul li {
+    margin-bottom: 8px;
+}
+
+.otu-admin-quick-links ul li a {
+    color: #800020;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.otu-admin-quick-links ul li a:hover {
+    color: #D4AF37;
+    text-decoration: underline;
+}
+
+/* ---- Settings Tabs ---- */
+.otu-settings-tabs {
+    margin-bottom: 0 !important;
+}
+
+.otu-settings-tabs .nav-tab {
+    color: #555;
+}
+
+.otu-settings-tabs .nav-tab:hover {
+    color: #800020;
+    border-color: #D4AF37 #D4AF37 #ffffff;
+}
+
+.otu-settings-tabs .nav-tab-active,
+.otu-settings-tabs .nav-tab-active:focus,
+.otu-settings-tabs .nav-tab-active:hover {
+    background: #ffffff;
+    color: #800020;
+    border-bottom-color: #ffffff;
+    border-top: 3px solid #800020;
+}
+
+.otu-settings-form {
+    background: #ffffff;
+    border: 1px solid #ccd0d4;
+    border-top: none;
+    padding: 20px 24px;
+    border-radius: 0 0 4px 4px;
+}
+
+.otu-settings-form .form-table th {
+    width: 220px;
+    padding: 16px 10px 16px 0;
+    font-weight: 600;
+}
+
+.otu-settings-form input[type="text"],
+.otu-settings-form input[type="email"],
+.otu-settings-form textarea {
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    padding: 6px 10px;
+    transition: border-color 0.15s;
+}
+
+.otu-settings-form input[type="text"]:focus,
+.otu-settings-form input[type="email"]:focus,
+.otu-settings-form textarea:focus {
+    border-color: #800020;
+    box-shadow: 0 0 0 1px #800020;
+    outline: none;
+}
+
+.otu-settings-form .button-primary {
+    background: #800020 !important;
+    border-color: #5a0018 !important;
+    color: #D4AF37 !important;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+.otu-settings-form .button-primary:hover,
+.otu-settings-form .button-primary:focus {
+    background: #5a0018 !important;
+}
+
+/* ---- Booking List ---- */
+.otu-filter-bar {
+    margin: 12px 0 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.otu-filter-bar span {
+    font-weight: 600;
+    color: #555;
+}
+
+.otu-filter-btn {
+    display: inline-block;
+    padding: 5px 14px;
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.otu-filter-btn:hover {
+    background: #800020;
+    color: #D4AF37;
+    border-color: #800020;
+}
+
+.otu-filter-btn.otu-filter-active {
+    background: #800020;
+    color: #D4AF37;
+    border-color: #5a0018;
+    font-weight: 600;
+}
+
+/* ---- Admin Tables ---- */
+.otu-admin-table {
+    margin-top: 12px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.otu-admin-table thead th {
+    background: #800020;
+    color: #D4AF37;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid #5a0018;
+}
+
+.otu-admin-table tbody tr:nth-child(even) {
+    background: #fdf8f8;
+}
+
+.otu-admin-table tbody tr:hover {
+    background: #fff5f5;
+}
+
+.otu-admin-table tbody td {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+.otu-booking-status-select {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.otu-booking-status-select:focus {
+    border-color: #800020;
+    outline: none;
+}
+
+/* ---- Certificate List ---- */
+.otu-regen-cert {
+    background: #D4AF37 !important;
+    border-color: #b8952e !important;
+    color: #2c0000 !important;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.otu-regen-cert:hover {
+    background: #b8952e !important;
+    color: #ffffff !important;
+}
+
+/* ---- Booking Meta Box ---- */
+.otu-booking-meta-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.otu-booking-meta-table th {
+    text-align: left;
+    padding: 8px 12px;
+    background: #f9f0f0;
+    color: #800020;
+    width: 35%;
+    border: 1px solid #e5d5d5;
+    font-weight: 600;
+}
+
+.otu-booking-meta-table td {
+    padding: 8px 12px;
+    border: 1px solid #e5d5d5;
+}
+
+/* ---- Toast / Inline notices ---- */
+.otu-admin-notice {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.otu-admin-notice.success { color: #2e7d32; }
+.otu-admin-notice.error   { color: #c62828; }
+
+/* ---- Responsive ---- */
+@media screen and (max-width: 782px) {
+    .otu-admin-stats {
+        flex-direction: column;
+    }
+
+    .otu-admin-stat-card {
+        min-width: 100%;
+    }
+}

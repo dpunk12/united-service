@@ -1,0 +1,291 @@
+# Copyright (C) 2025 One Ten United Services
+# This file is distributed under the same license as the OTU Services plugin.
+# One Ten United Services <info@onetenunited.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OTU Services 1.0.0\n"
+"Report-Msgid-Bugs-To: https://onetenunited.com\n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WP-CLI 2.x\n"
+"X-Domain: otu\n"
+
+#. Plugin Name of the plugin
+msgid "OTU Services"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://onetenunited.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Complete services, booking, LMS integration, certificates and dashboard for One Ten United Services."
+msgstr ""
+
+#. Author of the plugin
+msgid "One Ten United Services"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://onetenunited.com"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Services"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Service"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Add New Service"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Edit Service"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "All Services"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "No services found."
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Digital Products"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Digital Product"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Add New Digital Product"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "No digital products found."
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Service Categories"
+msgstr ""
+
+#: includes/class-otu-cpt.php
+msgid "Service Category"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "LLC Formation Information"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "EIN Application Information"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Immigration Services Information"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Full Name *"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Phone Number *"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Email Address *"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Business Name *"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "State of Formation *"
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "Security check failed. Please try again."
+msgstr ""
+
+#: includes/class-otu-forms.php
+msgid "%s is required."
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Bookings"
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Booking"
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Book an Appointment"
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Full Name is required."
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "A valid email address is required."
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Please select a service."
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Please select a future date for your appointment."
+msgstr ""
+
+#: includes/class-otu-booking.php
+msgid "Your appointment request has been submitted! You will receive a confirmation email shortly."
+msgstr ""
+
+#: includes/class-otu-certificate.php
+msgid "Certificates"
+msgstr ""
+
+#: includes/class-otu-certificate.php
+msgid "Certificate"
+msgstr ""
+
+#: includes/class-otu-certificate.php
+msgid "Certificate of Completion"
+msgstr ""
+
+#: includes/class-otu-certificate.php
+msgid "Invalid user or course."
+msgstr ""
+
+#: includes/class-otu-certificate.php
+msgid "⬇ Download Certificate (PDF)"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "Welcome back, %s!"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "Overview"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "My Orders"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "My Downloads"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "My Courses"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "My Certificates"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "My Bookings"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "Profile"
+msgstr ""
+
+#: includes/class-otu-dashboard.php
+msgid "Profile updated successfully!"
+msgstr ""
+
+#: includes/class-otu-emails.php
+msgid "Your Appointment is Confirmed!"
+msgstr ""
+
+#: includes/class-otu-emails.php
+msgid "🏆 Congratulations! Your Certificate is Ready"
+msgstr ""
+
+#: includes/class-otu-emails.php
+msgid "Order Confirmed!"
+msgstr ""
+
+#: includes/class-otu-woocommerce.php
+msgid "How did you hear about us?"
+msgstr ""
+
+#: includes/class-otu-woocommerce.php
+msgid "What Happens Next?"
+msgstr ""
+
+#: includes/class-otu-setup.php
+msgid "Home"
+msgstr ""
+
+#: includes/class-otu-setup.php
+msgid "Services"
+msgstr ""
+
+#: includes/class-otu-setup.php
+msgid "Dashboard"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "OTU Services"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Settings"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "General Settings"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Payment Settings"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Email Settings"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Notification Toggles"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Booking Management"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Certificate Management"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Save Settings"
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Status updated."
+msgstr ""
+
+#: admin/class-otu-admin.php
+msgid "Certificate regenerated successfully."
+msgstr ""
