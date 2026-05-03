@@ -1,0 +1,19 @@
+/*
+Theme Name: One Ten United
+Theme URI: https://onetenunited.com
+Author: One Ten United Services
+Description: Professional multi-service, e-commerce and LMS theme for One Ten United Services NYC
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: otu
+Tags: e-commerce, lms, services, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/*
+ * This file is intentionally minimal.
+ * All theme styles are loaded from assets/css/main.css via functions.php.
+ */
