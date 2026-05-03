@@ -126,6 +126,30 @@
 
 </footer>
 
+<?php
+/**
+ * Sticky floating action buttons (Call Now / WhatsApp / Book Appointment).
+ * Required by §12 UI/UX of the project requirements.
+ */
+$otu_phone    = '17185550100';
+$otu_whatsapp = '17185550100';
+$otu_book_url = function_exists( 'get_permalink' ) ? get_permalink( get_page_by_path( 'contact-us' ) ) : home_url( '/contact-us/' );
+?>
+<div class="otu-floating-cta" role="complementary" aria-label="<?php esc_attr_e( 'Quick contact', 'otu' ); ?>">
+	<a class="otu-floating-cta__btn otu-floating-cta__btn--call" href="tel:+<?php echo esc_attr( $otu_phone ); ?>" aria-label="<?php esc_attr_e( 'Call Now', 'otu' ); ?>">
+		<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+		<span><?php esc_html_e( 'Call Now', 'otu' ); ?></span>
+	</a>
+	<a class="otu-floating-cta__btn otu-floating-cta__btn--whatsapp" href="https://wa.me/<?php echo esc_attr( $otu_whatsapp ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e( 'WhatsApp', 'otu' ); ?>">
+		<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.78a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 011.16 11.9c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.81 11.81 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></svg>
+		<span><?php esc_html_e( 'WhatsApp', 'otu' ); ?></span>
+	</a>
+	<a class="otu-floating-cta__btn otu-floating-cta__btn--book" href="<?php echo esc_url( $otu_book_url ? $otu_book_url : home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Book Appointment', 'otu' ); ?>">
+		<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14zm0-12H5V6h14z"/></svg>
+		<span><?php esc_html_e( 'Book', 'otu' ); ?></span>
+	</a>
+</div>
+
 <?php wp_footer(); ?>
 </body>
 </html>

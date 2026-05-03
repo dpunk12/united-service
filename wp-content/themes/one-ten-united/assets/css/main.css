@@ -2889,3 +2889,74 @@ hr {
     color: #555;
   }
 }
+
+/* =====================================================================
+   Sticky Floating Action Buttons (Call / WhatsApp / Book)
+   Required by §12 UI/UX of project requirements.
+   ===================================================================== */
+.otu-floating-cta {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.otu-floating-cta__btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-primary, 'Poppins', sans-serif);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  white-space: nowrap;
+}
+
+.otu-floating-cta__btn:focus-visible {
+  outline: 3px solid var(--color-gold, #D4AF37);
+  outline-offset: 2px;
+}
+
+.otu-floating-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .3);
+  color: #fff;
+}
+
+.otu-floating-cta__btn--call     { background: var(--color-maroon, #800020); }
+.otu-floating-cta__btn--whatsapp { background: #25D366; }
+.otu-floating-cta__btn--book     { background: var(--color-black, #000); }
+.otu-floating-cta__btn--book     { border: 1px solid var(--color-gold, #D4AF37); }
+
+.otu-floating-cta__btn svg { flex: 0 0 auto; }
+
+@media (max-width: 600px) {
+  .otu-floating-cta {
+    right: 12px;
+    bottom: 12px;
+    gap: 8px;
+  }
+  .otu-floating-cta__btn {
+    padding: 12px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+  }
+  .otu-floating-cta__btn span { display: none; }
+}
+
+@media print {
+  .otu-floating-cta { display: none; }
+}
