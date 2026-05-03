@@ -106,7 +106,7 @@ get_header();
 			<div class="no-results">
 				<h2><?php esc_html_e( 'No Services Found', 'otu' ); ?></h2>
 				<p>
-					<?php esc_html_e( 'We couldn\'t find any services matching your criteria. Please check back soon or contact us directly.', 'otu' ); ?>
+					<?php esc_html_e( "We couldn't find any services matching your criteria. Please check back soon or contact us directly.", 'otu' ); ?>
 				</p>
 				<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn-primary">
 					<?php esc_html_e( 'Contact Us', 'otu' ); ?>

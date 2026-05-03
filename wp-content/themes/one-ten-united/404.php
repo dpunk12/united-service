@@ -24,7 +24,7 @@ get_header();
 					<?php esc_html_e( 'Page Not Found', 'otu' ); ?>
 				</h1>
 				<p class="error-404__message">
-					<?php esc_html_e( 'Sorry, the page you are looking for doesn\'t exist, has been moved, or the URL was typed incorrectly.', 'otu' ); ?>
+					<?php esc_html_e( "Sorry, the page you are looking for doesn't exist, has been moved, or the URL was typed incorrectly.", 'otu' ); ?>
 				</p>
 
 				<!-- Search Form -->

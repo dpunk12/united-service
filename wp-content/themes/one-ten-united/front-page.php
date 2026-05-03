@@ -15,7 +15,7 @@ get_header();
 	<div class="hero__overlay"></div>
 	<div class="container hero__inner">
 		<div class="hero__content">
-			<span class="hero__eyebrow"><?php esc_html_e( 'New York City\'s Trusted Services', 'otu' ); ?></span>
+			<span class="hero__eyebrow"><?php esc_html_e( "New York City's Trusted Services", 'otu' ); ?></span>
 			<h1 class="hero__title"><?php esc_html_e( 'One Ten United Services', 'otu' ); ?></h1>
 			<p class="hero__tagline">
 				<?php esc_html_e( 'Your Trusted NYC Partner for Business, Immigration & More', 'otu' ); ?>
