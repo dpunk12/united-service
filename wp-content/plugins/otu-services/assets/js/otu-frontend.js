@@ -143,7 +143,7 @@
         $form.find('input, select, textarea').on('blur', function () {
             var $field = $(this);
             if ($field.prop('required') && !$field.val().trim()) {
-                var label = $field.closest('.otu-form-row').find('label').text().replace('*', '').trim();
+                var label = $field.closest('.otu-form-row').find('label').text().replace(/\*/g, '').trim();
                 showFieldError($field, label + ' is required.');
             } else {
                 clearFieldError($field);
@@ -158,7 +158,7 @@
 
             $required.each(function () {
                 if (!$(this).val().trim()) {
-                    var label = $(this).closest('.otu-form-row').find('label').text().replace('*', '').trim();
+                    var label = $(this).closest('.otu-form-row').find('label').text().replace(/\*/g, '').trim();
                     showFieldError($(this), label + ' is required.');
                     isValid = false;
                 } else {
@@ -307,7 +307,7 @@
             $form.on('blur', '.otu-service-form [required]', function () {
                 var $field = $(this);
                 if (!$field.val().trim()) {
-                    var label = $field.closest('.otu-form-row').find('label').text().replace('*', '').trim();
+                    var label = $field.closest('.otu-form-row').find('label').text().replace(/\*/g, '').trim();
                     showFieldError($field, label + ' is required.');
                 } else {
                     clearFieldError($field);

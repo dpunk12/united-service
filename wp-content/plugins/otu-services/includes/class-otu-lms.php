@@ -128,7 +128,7 @@ class OTU_LMS {
 							__( 'Content for lesson: %s. Please update this lesson with detailed course content.', 'otu' ),
 							$lesson_title
 						),
-						'post_status'  => 'publish',
+						'post_status'  => 'draft',
 						'post_parent'  => $topic_id,
 						'menu_order'   => $order++,
 					)
