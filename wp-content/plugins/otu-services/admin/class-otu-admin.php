@@ -547,6 +547,11 @@ class OTU_Admin {
 			wp_send_json_error( array( 'message' => __( 'Invalid data.', 'otu' ) ) );
 		}
 
+		$booking_post = get_post( $booking_id );
+		if ( ! $booking_post || 'otu_booking' !== $booking_post->post_type ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid booking.', 'otu' ) ) );
+		}
+
 		update_post_meta( $booking_id, '_booking_status', $status );
 		wp_send_json_success( array( 'message' => __( 'Status updated.', 'otu' ), 'status' => $status ) );
 	}

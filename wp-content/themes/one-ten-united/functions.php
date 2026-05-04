@@ -163,7 +163,7 @@ function otu_excerpt_more( $more ) {
 	if ( is_admin() ) {
 		return $more;
 	}
-	return '&hellip;';
+	return __( '&hellip;', 'otu' );
 }
 add_filter( 'excerpt_more', 'otu_excerpt_more' );
 

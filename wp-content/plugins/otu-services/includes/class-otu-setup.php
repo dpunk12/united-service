@@ -215,7 +215,10 @@ class OTU_Setup {
 		$primary_menu_id = 0;
 		$primary_term    = get_term_by( 'name', 'Primary Menu', 'nav_menu' );
 		if ( ! $primary_term ) {
-			$primary_menu_id = wp_create_nav_menu( 'Primary Menu' );
+			$created = wp_create_nav_menu( 'Primary Menu' );
+			if ( ! is_wp_error( $created ) && $created ) {
+				$primary_menu_id = (int) $created;
+			}
 		} else {
 			$primary_menu_id = $primary_term->term_id;
 		}
@@ -224,14 +227,17 @@ class OTU_Setup {
 		$footer_menu_id = 0;
 		$footer_term    = get_term_by( 'name', 'Footer Menu', 'nav_menu' );
 		if ( ! $footer_term ) {
-			$footer_menu_id = wp_create_nav_menu( 'Footer Menu' );
+			$created = wp_create_nav_menu( 'Footer Menu' );
+			if ( ! is_wp_error( $created ) && $created ) {
+				$footer_menu_id = (int) $created;
+			}
 		} else {
 			$footer_menu_id = $footer_term->term_id;
 		}
 
 		// Assign pages to primary menu (only if menu has no items yet).
-		$primary_items = wp_get_nav_menu_items( $primary_menu_id );
-		if ( empty( $primary_items ) ) {
+		$primary_items = $primary_menu_id ? wp_get_nav_menu_items( $primary_menu_id ) : array();
+		if ( $primary_menu_id && empty( $primary_items ) ) {
 			$primary_pages = array( 'home', 'services', 'courses', 'digital-products', 'about-us', 'book-appointment', 'contact-us', 'dashboard' );
 			foreach ( $primary_pages as $slug ) {
 				if ( ! empty( $page_ids[ $slug ] ) ) {
@@ -251,8 +257,8 @@ class OTU_Setup {
 		}
 
 		// Assign pages to footer menu.
-		$footer_items = wp_get_nav_menu_items( $footer_menu_id );
-		if ( empty( $footer_items ) ) {
+		$footer_items = $footer_menu_id ? wp_get_nav_menu_items( $footer_menu_id ) : array();
+		if ( $footer_menu_id && empty( $footer_items ) ) {
 			$footer_pages = array( 'privacy-policy', 'terms-conditions', 'refund-policy', 'disclaimer', 'contact-us' );
 			foreach ( $footer_pages as $slug ) {
 				if ( ! empty( $page_ids[ $slug ] ) ) {

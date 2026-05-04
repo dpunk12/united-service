@@ -422,9 +422,10 @@ class OTU_Forms {
 				$form_data['owner_full_name']  = sanitize_text_field( wp_unslash( $_POST['otu_llc_owner_full_name'] ?? '' ) );
 				$form_data['owner_address']    = sanitize_text_field( wp_unslash( $_POST['otu_llc_owner_address'] ?? '' ) );
 				$form_data['owner_dob']        = sanitize_text_field( wp_unslash( $_POST['otu_llc_owner_dob'] ?? '' ) );
-				// SSN stored as sha256 hash — never store plaintext SSN.
-				$raw_ssn = wp_unslash( $_POST['otu_llc_owner_ssn'] ?? '' );
-				$form_data['owner_ssn_hash']   = ! empty( $raw_ssn ) ? hash( 'sha256', $raw_ssn ) : '';
+				// SSN is intentionally NOT persisted in WordPress meta. The SHA-256 of a 9-digit
+				// SSN is brute-forceable in seconds, so storing the hash is functionally equivalent
+				// to storing the plaintext. The form requires the SSN so the customer transmits it
+				// over TLS; downstream filing/processing must read it from a separate channel.
 				break;
 
 			case 'ein':
@@ -432,8 +433,7 @@ class OTU_Forms {
 				$form_data['business_name']      = sanitize_text_field( wp_unslash( $_POST['otu_ein_business_name'] ?? '' ) );
 				$form_data['responsible_party']  = sanitize_text_field( wp_unslash( $_POST['otu_ein_responsible_party'] ?? '' ) );
 				$form_data['ein_type']           = sanitize_key( wp_unslash( $_POST['otu_ein_type'] ?? '' ) );
-				$raw_ssn_itin = wp_unslash( $_POST['otu_ein_ssn_itin'] ?? '' );
-				$form_data['ssn_itin_hash']      = ! empty( $raw_ssn_itin ) ? hash( 'sha256', $raw_ssn_itin ) : '';
+				// SSN/ITIN intentionally NOT persisted — see note above.
 				break;
 
 			case 'immigration':

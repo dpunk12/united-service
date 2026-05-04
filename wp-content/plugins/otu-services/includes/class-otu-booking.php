@@ -293,14 +293,28 @@ class OTU_Booking {
 		}
 		if ( empty( $service ) ) {
 			$errors[] = __( 'Please select a service.', 'otu' );
+		} else {
+			$service_post = get_post( $service );
+			if ( ! $service_post || 'service' !== $service_post->post_type || 'publish' !== $service_post->post_status ) {
+				$errors[] = __( 'Please select a valid service.', 'otu' );
+				$service  = 0;
+			}
 		}
 		if ( empty( $date ) ) {
 			$errors[] = __( 'Please select a preferred date.', 'otu' );
-		} elseif ( strtotime( $date ) <= strtotime( 'today' ) ) {
-			$errors[] = __( 'Please select a future date for your appointment.', 'otu' );
+		} elseif ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) {
+			$errors[] = __( 'Please select a valid date (YYYY-MM-DD).', 'otu' );
+		} else {
+			$date_obj = DateTime::createFromFormat( 'Y-m-d', $date );
+			$today    = wp_date( 'Y-m-d' );
+			if ( ! $date_obj || $date_obj->format( 'Y-m-d' ) !== $date || $date <= $today ) {
+				$errors[] = __( 'Please select a future date for your appointment.', 'otu' );
+			}
 		}
 		if ( empty( $time ) ) {
 			$errors[] = __( 'Please select a preferred time.', 'otu' );
+		} elseif ( ! array_key_exists( $time, $this->get_time_slots() ) ) {
+			$errors[] = __( 'Please select a valid time slot.', 'otu' );
 		}
 
 		if ( ! empty( $errors ) ) {
