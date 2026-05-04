@@ -272,6 +272,13 @@ add_action( 'woocommerce_after_main_content', 'otu_woo_wrapper_end', 10 );
  * CUSTOM POST TYPE: SERVICE (register if no plugin handles it)
  * ========================================================= */
 function otu_register_service_cpt() {
+	// Fallback only — if the OTU Services plugin (or another plugin) already
+	// registered the `service` post type, do nothing to avoid clobbering its
+	// configuration (rewrite rules, capabilities, taxonomies, etc.).
+	if ( post_type_exists( 'service' ) ) {
+		return;
+	}
+
 	$labels = array(
 		'name'               => esc_html_x( 'Services', 'post type general name', 'otu' ),
 		'singular_name'      => esc_html_x( 'Service', 'post type singular name', 'otu' ),
@@ -296,18 +303,21 @@ function otu_register_service_cpt() {
 		'taxonomies'         => array( 'service_category' ),
 	) );
 
-	register_taxonomy( 'service_category', array( 'service' ), array(
-		'labels'            => array(
-			'name'          => esc_html_x( 'Service Categories', 'taxonomy general name', 'otu' ),
-			'singular_name' => esc_html_x( 'Service Category', 'taxonomy singular name', 'otu' ),
-		),
-		'hierarchical'      => true,
-		'public'            => true,
-		'rewrite'           => array( 'slug' => 'service-category' ),
-		'show_in_rest'      => true,
-	) );
+	if ( ! taxonomy_exists( 'service_category' ) ) {
+		register_taxonomy( 'service_category', array( 'service' ), array(
+			'labels'            => array(
+				'name'          => esc_html_x( 'Service Categories', 'taxonomy general name', 'otu' ),
+				'singular_name' => esc_html_x( 'Service Category', 'taxonomy singular name', 'otu' ),
+			),
+			'hierarchical'      => true,
+			'public'            => true,
+			'rewrite'           => array( 'slug' => 'service-category' ),
+			'show_in_rest'      => true,
+		) );
+	}
 }
-add_action( 'init', 'otu_register_service_cpt' );
+// Register late so the plugin (default priority 10) wins when both are active.
+add_action( 'init', 'otu_register_service_cpt', 20 );
 
 /* =========================================================
  * TITLE TAG FALLBACK

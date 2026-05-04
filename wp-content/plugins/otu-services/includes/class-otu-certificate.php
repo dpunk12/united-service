@@ -121,8 +121,28 @@ class OTU_Certificate {
 			return new WP_Error( 'invalid_data', __( 'Invalid user or course.', 'otu' ) );
 		}
 
-		// Generate unique certificate ID.
-		$certificate_id = 'OTU-' . strtoupper( substr( md5( $user_id . $course_id . time() ), 0, 8 ) );
+		// Generate unique certificate ID, retry if collision (extremely unlikely).
+		$certificate_id = '';
+		for ( $attempt = 0; $attempt < 5; $attempt++ ) {
+			$candidate = 'OTU-' . strtoupper( wp_generate_password( 8, false, false ) );
+			$existing_id = get_posts(
+				array(
+					'post_type'      => 'otu_certificate',
+					'post_status'    => 'any',
+					'posts_per_page' => 1,
+					'fields'         => 'ids',
+					'meta_key'       => '_certificate_id',
+					'meta_value'     => $candidate,
+				)
+			);
+			if ( empty( $existing_id ) ) {
+				$certificate_id = $candidate;
+				break;
+			}
+		}
+		if ( '' === $certificate_id ) {
+			return new WP_Error( 'cert_id_collision', __( 'Could not generate a unique certificate ID. Please try again.', 'otu' ) );
+		}
 		$issue_date     = gmdate( 'F j, Y' );
 		$student_name   = trim( $user->first_name . ' ' . $user->last_name );
 		if ( empty( $student_name ) ) {
@@ -348,7 +368,14 @@ class OTU_Certificate {
 		$course_name    = get_the_title( $course_id );
 		$student_id     = absint( get_post_meta( $cert_id, '_student_id', true ) );
 		$student        = get_userdata( $student_id );
-		$student_name   = $student ? trim( $student->first_name . ' ' . $student->last_name ) : $student->display_name;
+		if ( $student ) {
+			$student_name = trim( $student->first_name . ' ' . $student->last_name );
+			if ( '' === $student_name ) {
+				$student_name = $student->display_name;
+			}
+		} else {
+			$student_name = __( 'Unknown Student', 'otu' );
+		}
 		$pdf_path       = get_post_meta( $cert_id, '_pdf_path', true );
 		$has_pdf        = ! empty( $pdf_path ) && file_exists( $pdf_path );
 
@@ -419,6 +446,15 @@ class OTU_Certificate {
 
 		if ( empty( $pdf_path ) || ! file_exists( $pdf_path ) ) {
 			wp_die( esc_html__( 'Certificate PDF is not available yet.', 'otu' ), 404 );
+		}
+
+		// Path-traversal containment: ensure the PDF lives inside the certificate dir.
+		$upload_dir = wp_upload_dir();
+		$cert_dir   = trailingslashit( $upload_dir['basedir'] ) . 'otu-certificates/';
+		$real_pdf   = realpath( $pdf_path );
+		$real_dir   = realpath( $cert_dir );
+		if ( false === $real_pdf || false === $real_dir || 0 !== strpos( $real_pdf, trailingslashit( $real_dir ) ) ) {
+			wp_die( esc_html__( 'Invalid certificate file location.', 'otu' ), 403 );
 		}
 
 		$certificate_id = get_post_meta( $cert_id, '_certificate_id', true );

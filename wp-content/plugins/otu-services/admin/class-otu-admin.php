@@ -566,6 +566,11 @@ class OTU_Admin {
 			wp_send_json_error( array( 'message' => __( 'Invalid certificate.', 'otu' ) ) );
 		}
 
+		$cert_post = get_post( $cert_id );
+		if ( ! $cert_post || 'otu_certificate' !== $cert_post->post_type ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid certificate.', 'otu' ) ) );
+		}
+
 		$student_id = absint( get_post_meta( $cert_id, '_student_id', true ) );
 		$course_id  = absint( get_post_meta( $cert_id, '_course_id', true ) );
 

@@ -112,13 +112,25 @@ class OTU_Setup {
 		// Ensure the certificate upload directory exists.
 		$upload_dir  = wp_upload_dir();
 		$cert_dir    = trailingslashit( $upload_dir['basedir'] ) . 'otu-certificates/';
+		$cert_dir_ok = true;
 		if ( ! file_exists( $cert_dir ) ) {
-			wp_mkdir_p( $cert_dir );
+			if ( ! wp_mkdir_p( $cert_dir ) ) {
+				$cert_dir_ok = false;
+				set_transient(
+					'otu_cert_dir_error',
+					sprintf(
+						/* translators: %s: directory path */
+						__( 'OTU Services: Could not create certificate directory at %s. Certificate PDFs will not be generated until this is resolved.', 'otu' ),
+						$cert_dir
+					),
+					DAY_IN_SECONDS
+				);
+			}
 		}
 
 		// Add .htaccess to protect certificate directory (Apache).
 		$htaccess = $cert_dir . '.htaccess';
-		if ( ! file_exists( $htaccess ) ) {
+		if ( $cert_dir_ok && ! file_exists( $htaccess ) ) {
 			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
 			file_put_contents(
 				$htaccess,
