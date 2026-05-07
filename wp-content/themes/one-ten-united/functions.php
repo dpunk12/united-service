@@ -58,15 +58,26 @@ function otu_setup() {
 	add_theme_support( 'wc_product_gallery_lightbox' );
 	add_theme_support( 'wc_product_gallery_slider' );
 
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Navigation', 'otu' ),
-		'footer'  => esc_html__( 'Footer Navigation', 'otu' ),
-	) );
-
 	add_image_size( 'otu-card', 600, 400, true );
 	add_image_size( 'otu-hero', 1920, 800, true );
 }
 add_action( 'after_setup_theme', 'otu_setup' );
+
+/**
+ * Register navigation menu locations on `init`.
+ *
+ * The labels use translation functions, so this must run after textdomains
+ * are available. Since WP 6.7, calling `__()`/`esc_html__()` for a
+ * plugin/theme domain before `init` triggers a `_load_textdomain_just_in_time`
+ * doing-it-wrong notice.
+ */
+function otu_register_nav_menus() {
+	register_nav_menus( array(
+		'primary' => esc_html__( 'Primary Navigation', 'otu' ),
+		'footer'  => esc_html__( 'Footer Navigation', 'otu' ),
+	) );
+}
+add_action( 'init', 'otu_register_nav_menus' );
 
 /* =========================================================
  * ENQUEUE SCRIPTS & STYLES
