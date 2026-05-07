@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OTU_VERSION', '1.0.0' );
+define( 'OTU_VERSION', '1.0.1' );
 define( 'OTU_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OTU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -53,6 +53,19 @@ function otu_init_plugin() {
 	new OTU_Admin();
 }
 add_action( 'plugins_loaded', 'otu_init_plugin' );
+
+/**
+ * Flush rewrite rules once when the plugin version changes, so updated CPT
+ * rewrite slugs take effect without requiring the admin to manually visit
+ * Settings → Permalinks or to deactivate/reactivate the plugin.
+ */
+function otu_maybe_flush_rewrites() {
+	if ( get_option( 'otu_plugin_version' ) !== OTU_VERSION ) {
+		flush_rewrite_rules( false );
+		update_option( 'otu_plugin_version', OTU_VERSION );
+	}
+}
+add_action( 'init', 'otu_maybe_flush_rewrites', 99 );
 
 /**
  * Load plugin text domain.

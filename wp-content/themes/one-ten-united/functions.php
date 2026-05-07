@@ -269,6 +269,35 @@ function otu_woo_wrapper_end() {
 add_action( 'woocommerce_after_main_content', 'otu_woo_wrapper_end', 10 );
 
 /* =========================================================
+ * SERVICE URL HELPER
+ * =========================================================
+ * Resolve a service "card" link to a real service permalink when a
+ * `service` CPT post exists at the given slug; otherwise fall back to
+ * the services archive. This prevents 404s when the homepage links to
+ * services that have not yet been created in the admin.
+ */
+function otu_service_url( $slug ) {
+	$slug = sanitize_title( $slug );
+
+	if ( $slug && post_type_exists( 'service' ) ) {
+		$service = get_page_by_path( $slug, OBJECT, 'service' );
+		if ( $service && 'publish' === $service->post_status ) {
+			return get_permalink( $service );
+		}
+	}
+
+	// Fallback: services archive / page.
+	if ( post_type_exists( 'service' ) ) {
+		$archive = get_post_type_archive_link( 'service' );
+		if ( $archive ) {
+			return $archive;
+		}
+	}
+
+	return home_url( '/services/' );
+}
+
+/* =========================================================
  * CUSTOM POST TYPE: SERVICE (register if no plugin handles it)
  * ========================================================= */
 function otu_register_service_cpt() {

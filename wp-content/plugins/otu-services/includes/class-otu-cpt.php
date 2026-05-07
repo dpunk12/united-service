@@ -77,7 +77,7 @@ class OTU_CPT {
 			'show_in_menu'       => true,
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug'       => 'services/%service_category%',
+				'slug'       => 'services',
 				'with_front' => false,
 			),
 			'capability_type'    => 'post',
