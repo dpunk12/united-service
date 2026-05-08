@@ -1285,6 +1285,96 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
+   Digital Products Archive Grid
+   -------------------------------------------------------------------------- */
+.digital-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-block: 2.5rem 3rem;
+}
+
+.digital-product-card {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.digital-product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.digital-product-card__thumb {
+  height: 200px;
+  overflow: hidden;
+}
+
+.digital-product-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.digital-product-card:hover .digital-product-card__thumb img {
+  transform: scale(1.05);
+}
+
+.digital-product-card__thumb--placeholder {
+  background: linear-gradient(135deg, var(--color-maroon-dark), var(--color-black));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.3);
+}
+
+.digital-product-card__body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.digital-product-card__title {
+  font-size: 1.0625rem;
+  margin-bottom: .625rem;
+}
+
+.digital-product-card__title a {
+  color: var(--color-gray-800);
+}
+
+.digital-product-card__title a:hover {
+  color: var(--color-maroon);
+  text-decoration: none;
+}
+
+.digital-product-card__excerpt {
+  color: var(--color-gray-600);
+  font-size: .9375rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.digital-product-card__price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-maroon);
+  margin-bottom: 1rem;
+}
+
+.digital-product-card__actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
    Blog Post Cards
    -------------------------------------------------------------------------- */
 .posts-grid {
@@ -2384,6 +2474,26 @@ hr {
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
+}
+
+/* Legal disclaimer bar */
+.footer-disclaimer {
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-block: .85rem;
+}
+
+.footer-disclaimer__text {
+  font-size: .8125rem;
+  color: var(--color-gray-400);
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer-disclaimer__text strong {
+  color: var(--color-gold);
+  font-weight: 600;
 }
 
 .footer-bottom {

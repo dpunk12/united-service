@@ -32,6 +32,16 @@ class OTU_Admin {
 		add_action( 'wp_ajax_otu_update_booking_status', array( $this, 'ajax_update_booking_status' ) );
 		add_action( 'wp_ajax_otu_regenerate_certificate', array( $this, 'ajax_regenerate_certificate' ) );
 		add_action( 'admin_notices', array( $this, 'activation_notice' ) );
+		add_action( 'wp_ajax_otu_dismiss_backup_notice', array( $this, 'ajax_dismiss_backup_notice' ) );
+	}
+
+	/**
+	 * AJAX handler: dismiss the UpdraftPlus backup recommendation notice for 30 days.
+	 */
+	public function ajax_dismiss_backup_notice() {
+		check_ajax_referer( 'otu_dismiss_backup_notice', 'nonce' );
+		set_transient( 'otu_backup_notice_dismissed', true, 30 * DAY_IN_SECONDS );
+		wp_send_json_success();
 	}
 
 	/**
@@ -54,6 +64,39 @@ class OTU_Admin {
 					?>
 				</p>
 			</div>
+			<?php
+		}
+
+		// Backup plugin recommendation notice (dismissible, shown once per day).
+		if (
+			! class_exists( 'UpdraftPlus' )
+			&& current_user_can( 'install_plugins' )
+			&& ! get_transient( 'otu_backup_notice_dismissed' )
+		) {
+			?>
+			<div class="notice notice-warning is-dismissible" id="otu-backup-notice">
+				<p>
+					<?php
+					echo wp_kses_post(
+						sprintf(
+							/* translators: %s: link to install UpdraftPlus */
+							__( '<strong>OTU Services recommends:</strong> Install %s to enable automated backups of your website (required by project security requirements).', 'otu' ),
+							'<a href="' . esc_url( admin_url( 'plugin-install.php?s=updraftplus&tab=search&type=term' ) ) . '" target="_blank" rel="noopener noreferrer">UpdraftPlus Backup</a>'
+						)
+					);
+					?>
+				</p>
+			</div>
+			<script>
+			(function($){
+				$(document).on('click', '#otu-backup-notice .notice-dismiss', function(){
+					$.post(ajaxurl, {
+						action: 'otu_dismiss_backup_notice',
+						nonce: '<?php echo esc_js( wp_create_nonce( 'otu_dismiss_backup_notice' ) ); ?>'
+					});
+				});
+			})(jQuery);
+			</script>
 			<?php
 		}
 	}

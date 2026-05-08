@@ -97,6 +97,16 @@
 		</div>
 	</div>
 
+	<!-- Legal Disclaimer Bar (required by §13 of project requirements) -->
+	<div class="footer-disclaimer">
+		<div class="container">
+			<p class="footer-disclaimer__text">
+				<strong><?php esc_html_e( 'Disclaimer:', 'otu' ); ?></strong>
+				<?php esc_html_e( 'We are not a law firm and do not provide legal advice. We provide clerical and document preparation services only.', 'otu' ); ?>
+			</p>
+		</div>
+	</div>
+
 	<!-- Bottom Bar -->
 	<div class="footer-bottom">
 		<div class="container footer-bottom__inner">

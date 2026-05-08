@@ -89,27 +89,129 @@ class OTU_Setup {
 		),
 		'about-us'           => array(
 			'title'   => 'About Us',
-			'content' => '',
+			'content' => '<h2>Who We Are</h2>
+<p>One Ten United Services is a professional document preparation and clerical services company proudly serving individuals and businesses across New York City. We are not a law firm and do not provide legal advice — we provide clerical and document preparation services only.</p>
+
+<h2>Our Mission</h2>
+<p>Our mission is to make essential business and personal document preparation accessible, affordable, and stress-free for every New Yorker, regardless of background or language.</p>
+
+<h2>What We Do</h2>
+<p>We specialize in LLC formation, EIN applications, immigration form preparation, notary services, tax document preparation, and more. Our experienced team guides you through every step of the document preparation process.</p>
+
+<h2>Why Choose Us</h2>
+<ul>
+<li>Certified document preparers with years of experience</li>
+<li>Multilingual staff serving diverse communities</li>
+<li>Transparent pricing — no hidden fees</li>
+<li>Convenient in-person and remote appointments</li>
+<li>Secure handling of all sensitive documents</li>
+</ul>
+
+<p>Ready to get started? <a href="/book-appointment">Book a free consultation</a> today.</p>',
 		),
 		'contact-us'         => array(
 			'title'   => 'Contact Us',
-			'content' => '<!-- Contact form placeholder: add your preferred contact form plugin shortcode here -->',
+			'content' => '<h2>Get In Touch</h2>
+<p>We\'d love to hear from you. Book an appointment, send us a message, or drop by our office.</p>
+
+<div class="contact-info-grid">
+<div>
+<h3>Phone</h3>
+<p><a href="tel:+17185550100">(718) 555-0100</a></p>
+
+<h3>Email</h3>
+<p><a href="mailto:info@onetenunited.com">info@onetenunited.com</a></p>
+
+<h3>Hours</h3>
+<p>Monday – Friday: 9am – 6pm<br>Saturday: 10am – 4pm<br>Sunday: Closed</p>
+</div>
+</div>
+
+<h2>Book an Appointment</h2>
+[otu_booking_form]',
 		),
 		'privacy-policy'     => array(
 			'title'   => 'Privacy Policy',
-			'content' => '',
+			'content' => '<p>One Ten United Services ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information.</p>
+
+<h2>Information We Collect</h2>
+<p>We collect information you provide directly to us, including: name, email address, phone number, mailing address, date of birth, and government identification numbers required to complete document preparation services.</p>
+
+<h2>How We Use Your Information</h2>
+<p>We use your information to: prepare requested documents, communicate with you about your service requests, send confirmation and status update emails, and improve our services.</p>
+
+<h2>Data Security</h2>
+<p>We implement industry-standard security measures to protect your personal information. Sensitive data such as Social Security Numbers (SSN) and ITIN numbers are transmitted over encrypted connections and are never stored in plain text.</p>
+
+<h2>Third-Party Sharing</h2>
+<p>We do not sell, trade, or rent your personal information to third parties. We may share information with government agencies as required to complete your document preparation services (e.g., IRS, Secretary of State).</p>
+
+<h2>Contact Us</h2>
+<p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:info@onetenunited.com">info@onetenunited.com</a> or call (718) 555-0100.</p>',
 		),
 		'terms-conditions'   => array(
 			'title'   => 'Terms &amp; Conditions',
-			'content' => '',
+			'content' => '<p>Please read these Terms and Conditions carefully before using the One Ten United Services website and services.</p>
+
+<h2>Services</h2>
+<p>One Ten United Services provides clerical and document preparation services only. We are not a law firm. We do not provide legal advice. Using our services does not create an attorney-client relationship.</p>
+
+<h2>Payment</h2>
+<p>Payment is required at the time of service. All fees are listed on our services pages. We accept major credit cards and other electronic payment methods via our secure checkout.</p>
+
+<h2>Refund Policy</h2>
+<p>Please see our <a href="/refund-policy">Refund Policy</a> for details on cancellations and refunds.</p>
+
+<h2>Accuracy of Information</h2>
+<p>You are responsible for providing accurate and complete information required for document preparation. We are not liable for errors resulting from inaccurate information provided by you.</p>
+
+<h2>Limitation of Liability</h2>
+<p>Our liability is limited to the fees paid for the specific service in question. We are not responsible for any government rejections, delays, or decisions related to submitted documents.</p>
+
+<h2>Changes to Terms</h2>
+<p>We reserve the right to modify these Terms at any time. Continued use of our services constitutes acceptance of the updated Terms.</p>
+
+<h2>Contact</h2>
+<p>For questions, contact us at <a href="mailto:info@onetenunited.com">info@onetenunited.com</a>.</p>',
 		),
 		'refund-policy'      => array(
 			'title'   => 'Refund Policy',
-			'content' => '',
+			'content' => '<p>At One Ten United Services, we strive to deliver high-quality document preparation services. Please review our refund policy below.</p>
+
+<h2>Refund Eligibility</h2>
+<ul>
+<li><strong>Before work begins:</strong> Full refund within 24 hours of payment, before we have started preparing your documents.</li>
+<li><strong>Work in progress:</strong> A partial refund (50%) may be issued if work has begun but has not been submitted to the relevant agency.</li>
+<li><strong>After submission:</strong> No refund is available once documents have been submitted to a government agency on your behalf.</li>
+</ul>
+
+<h2>Non-Refundable Items</h2>
+<p>Government filing fees, third-party fees, and expedited processing fees are non-refundable under any circumstances.</p>
+
+<h2>How to Request a Refund</h2>
+<p>To request a refund, contact us at <a href="mailto:info@onetenunited.com">info@onetenunited.com</a> or call (718) 555-0100 within the applicable timeframe. Include your order number and reason for the refund request.</p>
+
+<h2>Processing Time</h2>
+<p>Approved refunds are processed within 5–10 business days to the original payment method.</p>',
 		),
 		'disclaimer'         => array(
 			'title'   => 'Disclaimer',
-			'content' => '',
+			'content' => '<p><strong>We are not a law firm and do not provide legal advice. We provide clerical and document preparation services only.</strong></p>
+
+<p>One Ten United Services is a document preparation company. We prepare documents and provide general information based on the information you provide to us. We are not licensed attorneys and cannot provide legal advice, represent you in court, or act as your attorney in any manner.</p>
+
+<p>By using our services, you acknowledge that:</p>
+
+<ul>
+<li>We are not a law firm and do not provide legal advice of any kind.</li>
+<li>We provide clerical and document preparation services only.</li>
+<li>The use of our services does not create an attorney-client relationship.</li>
+<li>Any information provided by us is general in nature and should not be relied upon as legal advice.</li>
+<li>For legal advice specific to your situation, you should consult a licensed attorney.</li>
+<li>For immigration matters, we are document preparers, not attorneys, and are not authorized to practice immigration law.</li>
+</ul>
+
+<p>If you require legal advice or representation, we recommend consulting a licensed attorney.</p>',
 		),
 		'dashboard'          => array(
 			'title'   => 'Dashboard',

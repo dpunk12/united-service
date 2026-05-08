@@ -198,6 +198,12 @@ class OTU_Booking {
 			<form id="otu-booking-form" class="otu-booking-form" method="post" novalidate>
 				<?php wp_nonce_field( 'otu_booking_form_nonce', 'otu_booking_nonce' ); ?>
 
+				<!-- Honeypot anti-spam field: must remain empty for real submissions -->
+				<div class="otu-hp-field" aria-hidden="true" style="display:none!important;visibility:hidden!important;position:absolute!important;left:-9999px!important;">
+					<label for="otu_hp_name"><?php esc_html_e( 'Leave this field blank', 'otu' ); ?></label>
+					<input type="text" id="otu_hp_name" name="otu_hp_name" value="" tabindex="-1" autocomplete="off" />
+				</div>
+
 				<div class="otu-form-row">
 					<label for="otu_booking_name"><?php esc_html_e( 'Full Name *', 'otu' ); ?></label>
 					<input type="text" id="otu_booking_name" name="booking_name"
@@ -271,6 +277,11 @@ class OTU_Booking {
 	 */
 	public function handle_booking_submission() {
 		check_ajax_referer( 'otu_booking_form_nonce', 'otu_booking_nonce' );
+
+		// Honeypot check: real users never populate this hidden field.
+		if ( ! empty( $_POST['otu_hp_name'] ) ) {
+			wp_send_json_error( array( 'messages' => array( __( 'Spam detected. Please try again.', 'otu' ) ) ) );
+		}
 
 		$name    = isset( $_POST['booking_name'] ) ? sanitize_text_field( wp_unslash( $_POST['booking_name'] ) ) : '';
 		$email   = isset( $_POST['booking_email'] ) ? sanitize_email( wp_unslash( $_POST['booking_email'] ) ) : '';

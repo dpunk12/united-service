@@ -391,3 +391,131 @@ function otu_pagination() {
 		echo '</nav>';
 	}
 }
+
+/* =========================================================
+ * SEO: META DESCRIPTION
+ * Outputs <meta name="description"> for every page.
+ * Priority 1 lets RankMath/Yoast override when installed.
+ * ========================================================= */
+function otu_meta_description() {
+	// If a recognised SEO plugin is active, let it handle this tag.
+	if (
+		defined( 'WPSEO_VERSION' )          // Yoast SEO
+		|| class_exists( 'RankMath' )       // RankMath
+		|| class_exists( 'All_in_One_SEO_Pack' )
+	) {
+		return;
+	}
+
+	$description = '';
+
+	if ( is_singular() ) {
+		// 1. Custom meta description field (set via admin custom fields).
+		$description = get_post_meta( get_the_ID(), '_otu_meta_description', true );
+
+		// 2. Post excerpt.
+		if ( empty( $description ) ) {
+			$description = get_the_excerpt();
+		}
+	} elseif ( is_home() || is_front_page() ) {
+		$description = get_bloginfo( 'description' );
+	} elseif ( is_category() || is_tag() || is_tax() ) {
+		$description = term_description();
+	} elseif ( is_author() ) {
+		$description = get_the_author_meta( 'description' );
+	}
+
+	// Ultimate fallback.
+	if ( empty( $description ) ) {
+		$description = get_bloginfo( 'description' );
+	}
+
+	$description = wp_strip_all_tags( $description );
+	$description = trim( $description );
+
+	if ( $description ) {
+		echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
+	}
+}
+add_action( 'wp_head', 'otu_meta_description', 1 );
+
+/* =========================================================
+ * SEO: JSON-LD SCHEMA (LocalBusiness)
+ * Adds schema.org/LocalBusiness markup on the front page.
+ * ========================================================= */
+function otu_schema_json_ld() {
+	if ( ! is_front_page() && ! is_home() ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'        => 'https://schema.org',
+		'@type'           => array( 'LocalBusiness', 'LegalService' ),
+		'name'            => 'One Ten United Services',
+		'description'     => 'Professional clerical and document preparation services for LLCs, EIN, immigration, notary, and more in New York City.',
+		'url'             => esc_url( home_url( '/' ) ),
+		'telephone'       => '+17185550100',
+		'email'           => 'info@onetenunited.com',
+		'priceRange'      => '$$',
+		'address'         => array(
+			'@type'           => 'PostalAddress',
+			'addressLocality' => 'New York',
+			'addressRegion'   => 'NY',
+			'addressCountry'  => 'US',
+		),
+		'openingHoursSpecification' => array(
+			array(
+				'@type'     => 'OpeningHoursSpecification',
+				'dayOfWeek' => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
+				'opens'     => '09:00',
+				'closes'    => '18:00',
+			),
+			array(
+				'@type'     => 'OpeningHoursSpecification',
+				'dayOfWeek' => 'Saturday',
+				'opens'     => '10:00',
+				'closes'    => '16:00',
+			),
+		),
+		'sameAs' => array(
+			'https://facebook.com/onetenunited',
+			'https://instagram.com/onetenunited',
+			'https://twitter.com/onetenunited',
+		),
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- json_encode with flags is already safe for HTML output.
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+	echo "\n" . '</script>' . "\n";
+}
+add_action( 'wp_head', 'otu_schema_json_ld' );
+
+/* =========================================================
+ * SPEED: PRECONNECT / DNS-PREFETCH FOR GOOGLE FONTS
+ * ========================================================= */
+function otu_resource_hints( $hints, $relation_type ) {
+	if ( 'preconnect' === $relation_type ) {
+		$hints[] = array( 'href' => 'https://fonts.googleapis.com', 'crossorigin' => 'anonymous' );
+		$hints[] = array( 'href' => 'https://fonts.gstatic.com',    'crossorigin' => 'anonymous' );
+	}
+	if ( 'dns-prefetch' === $relation_type ) {
+		$hints[] = array( 'href' => '//fonts.googleapis.com' );
+		$hints[] = array( 'href' => '//fonts.gstatic.com' );
+	}
+	return $hints;
+}
+add_filter( 'wp_resource_hints', 'otu_resource_hints', 10, 2 );
+
+/* =========================================================
+ * SPEED: DEFER NON-CRITICAL SCRIPTS
+ * Adds defer attribute to the main theme JS.
+ * ========================================================= */
+function otu_defer_scripts( $tag, $handle ) {
+	$defer_handles = array( 'otu-main' );
+	if ( in_array( $handle, $defer_handles, true ) ) {
+		$tag = str_replace( ' src=', ' defer src=', $tag );
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'otu_defer_scripts', 10, 2 );
