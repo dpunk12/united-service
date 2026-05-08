@@ -111,24 +111,24 @@ class OTU_Setup {
 		),
 		'contact-us'         => array(
 			'title'   => 'Contact Us',
-			'content' => '<h2>Get In Touch</h2>
-<p>We\'d love to hear from you. Book an appointment, send us a message, or drop by our office.</p>
+			'content' => "<h2>Get In Touch</h2>
+<p>We'd love to hear from you. Book an appointment, send us a message, or drop by our office.</p>
 
-<div class="contact-info-grid">
+<div class=\"contact-info-grid\">
 <div>
 <h3>Phone</h3>
-<p><a href="tel:+17185550100">(718) 555-0100</a></p>
+<p><a href=\"tel:+17185550100\">(718) 555-0100</a></p>
 
 <h3>Email</h3>
-<p><a href="mailto:info@onetenunited.com">info@onetenunited.com</a></p>
+<p><a href=\"mailto:info@onetenunited.com\">info@onetenunited.com</a></p>
 
 <h3>Hours</h3>
-<p>Monday – Friday: 9am – 6pm<br>Saturday: 10am – 4pm<br>Sunday: Closed</p>
+<p>Monday \xe2\x80\x93 Friday: 9am \xe2\x80\x93 6pm<br>Saturday: 10am \xe2\x80\x93 4pm<br>Sunday: Closed</p>
 </div>
 </div>
 
 <h2>Book an Appointment</h2>
-[otu_booking_form]',
+[otu_booking_form]",
 		),
 		'privacy-policy'     => array(
 			'title'   => 'Privacy Policy',
