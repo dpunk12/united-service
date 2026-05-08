@@ -17,6 +17,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 class OTU_Setup {
 
 	/**
+	 * Service posts to seed on activation.
+	 *
+	 * key   => post slug
+	 * value => array( title, excerpt, category )
+	 *
+	 * @var array
+	 */
+	private static $services = array(
+		'llc-formation'      => array(
+			'title'    => 'LLC Formation',
+			'excerpt'  => 'Start your business the right way. We handle all filings with the NY Secretary of State.',
+			'category' => 'Business Formation',
+		),
+		'ein-application'    => array(
+			'title'    => 'EIN Application',
+			'excerpt'  => 'Obtain your Employer Identification Number quickly and accurately from the IRS.',
+			'category' => 'Business Formation',
+		),
+		'immigration-forms'  => array(
+			'title'    => 'Immigration Forms',
+			'excerpt'  => 'Authorized immigration form preparation assistance. USCIS-compliant, accurate filings.',
+			'category' => 'Immigration',
+		),
+		'notary-services'    => array(
+			'title'    => 'Notary Services',
+			'excerpt'  => 'Licensed New York notary public available for all your official document needs.',
+			'category' => 'Notary',
+		),
+		'tax-services'       => array(
+			'title'    => 'Tax Services',
+			'excerpt'  => 'Personal and business tax preparation, filing, and planning by experienced professionals.',
+			'category' => 'Tax',
+		),
+		'document-preparation' => array(
+			'title'    => 'Document Preparation',
+			'excerpt'  => 'Professional preparation of legal, business, and personal documents with accuracy and care.',
+			'category' => '',
+		),
+	);
+
+	/**
 	 * Pages to create on activation.
 	 *
 	 * key   => page slug
@@ -95,6 +136,12 @@ class OTU_Setup {
 		$certificate = new OTU_Certificate();
 		$certificate->register_post_type();
 
+		// Seed default service category terms before seeding posts.
+		$cpt->create_default_terms();
+
+		// Seed default service posts.
+		self::seed_services();
+
 		// Create pages.
 		$page_ids = self::create_pages();
 
@@ -147,6 +194,37 @@ class OTU_Setup {
 	 */
 	public static function deactivate() {
 		flush_rewrite_rules();
+	}
+
+	/**
+	 * Seed default service CPT posts so that homepage cards resolve to real
+	 * permalinks instead of falling back to the archive or returning 404s.
+	 * Idempotent — skips any post whose slug already exists.
+	 * Public so it can be invoked from upgrade routines.
+	 */
+	public static function seed_services() {
+		foreach ( self::$services as $slug => $data ) {
+			$existing = get_page_by_path( $slug, OBJECT, 'service' );
+			if ( $existing ) {
+				continue;
+			}
+
+			$post_id = wp_insert_post( array(
+				'post_type'    => 'service',
+				'post_title'   => $data['title'],
+				'post_name'    => $slug,
+				'post_excerpt' => $data['excerpt'],
+				'post_content' => '<p>' . $data['excerpt'] . '</p>',
+				'post_status'  => 'publish',
+			) );
+
+			if ( ! is_wp_error( $post_id ) && $post_id && ! empty( $data['category'] ) ) {
+				$term = get_term_by( 'name', $data['category'], 'service_category' );
+				if ( $term ) {
+					wp_set_object_terms( $post_id, $term->term_id, 'service_category' );
+				}
+			}
+		}
 	}
 
 	/**
