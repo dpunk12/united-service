@@ -40,8 +40,8 @@
 						<li><a href="<?php echo esc_url( home_url( '/services' ) ); ?>"><?php esc_html_e( 'Services', 'otu' ); ?></a></li>
 						<li><a href="<?php echo esc_url( home_url( '/courses' ) ); ?>"><?php esc_html_e( 'Courses', 'otu' ); ?></a></li>
 						<li><a href="<?php echo esc_url( home_url( '/shop' ) ); ?>"><?php esc_html_e( 'Shop', 'otu' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/about' ) ); ?>"><?php esc_html_e( 'About Us', 'otu' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"><?php esc_html_e( 'Contact', 'otu' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/about-us' ) ); ?>"><?php esc_html_e( 'About Us', 'otu' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>"><?php esc_html_e( 'Contact', 'otu' ); ?></a></li>
 					</ul>
 				<?php endif; ?>
 			</div>

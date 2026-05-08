@@ -2292,12 +2292,19 @@ hr {
 }
 
 .footer-brand .custom-logo,
-.footer-brand img {
+.footer-brand img:not(.otu-fallback-logo) {
   height: 56px;
   width: auto;
   margin-bottom: 1rem;
   filter: brightness(0) invert(1);
   opacity: .85;
+}
+
+.footer-brand img.otu-fallback-logo {
+  height: 56px;
+  width: auto;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius-sm);
 }
 
 .footer-brand__tagline {

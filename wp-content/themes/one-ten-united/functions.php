@@ -255,7 +255,7 @@ function otu_get_logo() {
 		the_custom_logo();
 	} else {
 		echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="otu-text-logo" rel="home">';
-		echo '<img src="' . esc_url( OTU_URI . '/assets/images/logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" width="200" height="70" />';
+		echo '<img src="' . esc_url( OTU_URI . '/assets/images/logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="otu-fallback-logo" width="200" height="70" />';
 		echo '</a>';
 	}
 }

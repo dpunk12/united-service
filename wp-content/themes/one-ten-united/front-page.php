@@ -25,7 +25,7 @@ get_header();
 					<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 					<?php esc_html_e( 'Book Appointment', 'otu' ); ?>
 				</a>
-				<a href="<?php echo esc_url( home_url( '/services' ) ); ?>" class="btn btn-secondary hero__btn">
+				<a href="<?php echo esc_url( home_url( '/services' ) ); ?>" class="btn btn--outline-white hero__btn">
 					<?php esc_html_e( 'Get Started', 'otu' ); ?>
 					<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 				</a>
@@ -150,7 +150,7 @@ get_header();
 				<div class="featured-card__body">
 					<h3 class="featured-card__title"><?php esc_html_e( 'Immigration Assistance', 'otu' ); ?></h3>
 					<p><?php esc_html_e( 'Comprehensive immigration form preparation for green cards, citizenship, work permits, and family petitions.', 'otu' ); ?></p>
-					<a href="<?php echo esc_url( home_url( '/services/immigration-forms' ) ); ?>" class="btn btn-gold btn-sm">
+					<a href="<?php echo esc_url( otu_service_url( 'immigration-forms' ) ); ?>" class="btn btn-gold btn-sm">
 						<?php esc_html_e( 'Get This Service', 'otu' ); ?>
 					</a>
 				</div>
@@ -161,7 +161,7 @@ get_header();
 				<div class="featured-card__body">
 					<h3 class="featured-card__title"><?php esc_html_e( 'Tax Filing Service', 'otu' ); ?></h3>
 					<p><?php esc_html_e( 'Stress-free personal and business tax filing with maximum refund guarantee and year-round support.', 'otu' ); ?></p>
-					<a href="<?php echo esc_url( home_url( '/services/tax-services' ) ); ?>" class="btn btn-gold btn-sm">
+					<a href="<?php echo esc_url( otu_service_url( 'tax-services' ) ); ?>" class="btn btn-gold btn-sm">
 						<?php esc_html_e( 'Get This Service', 'otu' ); ?>
 					</a>
 				</div>
