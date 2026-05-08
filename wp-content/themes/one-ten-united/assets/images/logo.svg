@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" role="img" aria-label="One Ten United Services">
+  <!-- Background rectangle -->
+  <rect width="240" height="70" rx="6" fill="#800020"/>
+
+  <!-- Gold accent bar -->
+  <rect x="0" y="0" width="6" height="70" fill="#D4AF37"/>
+
+  <!-- "OTU" monogram -->
+  <text
+    x="22"
+    y="42"
+    font-family="'Poppins', 'Arial Black', sans-serif"
+    font-size="32"
+    font-weight="700"
+    fill="#FFFFFF"
+    letter-spacing="2"
+  >OTU</text>
+
+  <!-- Divider -->
+  <line x1="110" y1="14" x2="110" y2="56" stroke="#D4AF37" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- "One Ten United" text -->
+  <text
+    x="122"
+    y="28"
+    font-family="'Poppins', Arial, sans-serif"
+    font-size="11"
+    font-weight="700"
+    fill="#FFFFFF"
+    letter-spacing="1"
+  >ONE TEN UNITED</text>
+
+  <!-- "Services" tagline -->
+  <text
+    x="122"
+    y="47"
+    font-family="'Poppins', Arial, sans-serif"
+    font-size="10"
+    font-weight="400"
+    fill="#D4AF37"
+    letter-spacing="2"
+  >SERVICES</text>
+</svg>
