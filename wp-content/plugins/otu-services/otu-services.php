@@ -112,6 +112,11 @@ add_action( 'wp_enqueue_scripts', 'otu_enqueue_frontend_assets' );
  * Enqueue admin assets.
  */
 function otu_enqueue_admin_assets( $hook ) {
+	// Only load on OTU admin pages.
+	if ( false === strpos( $hook, 'otu-' ) ) {
+		return;
+	}
+
 	wp_enqueue_style(
 		'otu-admin',
 		OTU_PLUGIN_URL . 'admin/assets/css/otu-admin.css',

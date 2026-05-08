@@ -255,7 +255,7 @@ class OTU_Setup {
 
 			if ( ! is_wp_error( $page_id ) && $page_id ) {
 				if ( ! empty( $data['template'] ) ) {
-					update_post_meta( $page_id, '_wp_page_template', $data['template'] );
+					update_post_meta( $page_id, '_wp_page_template', $data['template'] . '.php' );
 				}
 				$page_ids[ $slug ] = $page_id;
 			}

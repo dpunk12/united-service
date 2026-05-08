@@ -202,7 +202,7 @@ class OTU_Dashboard {
 		}
 
 		$course_count = 0;
-		if ( function_exists( 'OTU_LMS::otu_get_user_courses' ) || class_exists( 'OTU_LMS' ) ) {
+		if ( class_exists( 'OTU_LMS' ) ) {
 			$courses      = OTU_LMS::otu_get_user_courses( $user_id );
 			$course_count = count( $courses );
 		}

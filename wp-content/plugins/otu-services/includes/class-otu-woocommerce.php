@@ -110,7 +110,11 @@ class OTU_WooCommerce {
 			$allowed = array( 'google', 'social_media', 'referral', 'advertisement', 'returning', 'other' );
 			$value   = sanitize_key( wp_unslash( $_POST['otu_how_did_you_hear'] ) );
 			if ( in_array( $value, $allowed, true ) ) {
-				update_post_meta( $order_id, '_otu_how_did_you_hear', $value );
+				$order = wc_get_order( $order_id );
+				if ( $order ) {
+					$order->update_meta_data( '_otu_how_did_you_hear', $value );
+					$order->save();
+				}
 			}
 		}
 	}

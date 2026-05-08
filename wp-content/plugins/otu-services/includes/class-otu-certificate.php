@@ -466,8 +466,8 @@ class OTU_Certificate {
 		header( 'Cache-Control: private, max-age=0, must-revalidate' );
 		header( 'Pragma: public' );
 
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		echo file_get_contents( $pdf_path );
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_readfile
+		readfile( $pdf_path );
 		exit;
 	}
 

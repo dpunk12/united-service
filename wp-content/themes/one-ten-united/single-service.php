@@ -74,7 +74,7 @@ get_header();
 								endif;
 							else :
 							?>
-								<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn-gold service-hero__btn">
+								<a href="<?php echo esc_url( home_url( '/contact-us' ) ); ?>" class="btn btn-gold service-hero__btn">
 									<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
 									<?php esc_html_e( 'Buy This Service', 'otu' ); ?>
 								</a>

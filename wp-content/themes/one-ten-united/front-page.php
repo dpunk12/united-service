@@ -139,7 +139,7 @@ get_header();
 				<div class="featured-card__body">
 					<h3 class="featured-card__title"><?php esc_html_e( 'Business Formation Package', 'otu' ); ?></h3>
 					<p><?php esc_html_e( 'Complete LLC or Corporation formation including EIN, registered agent, and operating agreement.', 'otu' ); ?></p>
-					<a href="<?php echo esc_url( home_url( '/services/business-formation' ) ); ?>" class="btn btn-gold btn-sm">
+					<a href="<?php echo esc_url( otu_service_url( 'llc-formation' ) ); ?>" class="btn btn-gold btn-sm">
 						<?php esc_html_e( 'Get This Service', 'otu' ); ?>
 					</a>
 				</div>

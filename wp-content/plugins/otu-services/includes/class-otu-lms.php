@@ -86,8 +86,17 @@ class OTU_LMS {
 
 		$instance = new self();
 		foreach ( $instance->scaffold_courses as $course_data ) {
-			$existing = get_page_by_title( $course_data['title'], OBJECT, 'courses' );
-			if ( $existing ) {
+			$existing_query = new WP_Query(
+				array(
+					'post_type'      => 'courses',
+					'post_status'    => 'publish',
+					'title'          => $course_data['title'],
+					'posts_per_page' => 1,
+					'fields'         => 'ids',
+					'no_found_rows'  => true,
+				)
+			);
+			if ( $existing_query->have_posts() ) {
 				continue;
 			}
 
